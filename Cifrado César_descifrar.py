@@ -1,14 +1,19 @@
 texto = input("Ingrese el texto a descifrar: ")
 desplazamiento = int(input("Ingrese el número del desplazamiento: "))
-abecedario = "abcdefghijklmnñopqrstuvwxyz"
-texto_cifrado = ""
 
-for caracter in texto:
-    if caracter == " ":
-        texto_cifrado += " "
-    else:
-        posicion = abecedario.find(caracter)
-        posicion_nueva = posicion - desplazamiento
-        texto_cifrado += abecedario[posicion_nueva]
+def descifrar_cesar(texto, desplazamiento):
+    abecedario = "abcdefghijklmnñopqrstuvwxyz"
+    texto_descifrado = ""
 
-print(f"Texto cifrado: {texto_cifrado}")
+    for caracter in texto.lower():
+        if caracter == " ":
+            texto_descifrado += " "
+        else:
+            posicion = abecedario.find(caracter)
+            posicion_nueva = (posicion - desplazamiento) % len(abecedario)
+            texto_descifrado += abecedario[posicion_nueva]
+
+    print(f"Texto cifrado: {texto}")
+    print(f"Texto descifrado: {texto_descifrado}")
+
+descifrar_cesar(texto, desplazamiento)
